@@ -12,6 +12,7 @@ protected:
 	std::string nameFileResults;
 	std::ofstream fileResults;
 	int NUMIMAGES;
+	int borrame;
 	
 public:
 	App(){		

@@ -4,6 +4,6 @@ using namespace std;
 int main() {
 
 	cout << "hola" << endl;
-	float;
+	float borrame;
 	return 1;
 }
