@@ -149,6 +149,16 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.h" />
+    <ClInclude Include="AppGlcm.h" />
+    <ClInclude Include="ColorReducer.h" />
+    <ClInclude Include="DataFrameViewer.h" />
+    <ClInclude Include="Displacement.h" />
+    <ClInclude Include="FeaturesVectorFinder.h" />
+    <ClInclude Include="GLCMDescriptor.h" />
+    <ClInclude Include="KernelFinder.h" />
+    <ClInclude Include="MatrixNormalizer.h" />
+    <ClInclude Include="Metrics.h" />
+    <ClInclude Include="Modifier.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
