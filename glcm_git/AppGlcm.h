@@ -16,7 +16,7 @@ private:
 
 public:
 	AppGlcm(){
-		NUMCLASSTEXTURES =10;				/// esto tampoco deberia dar problemas
+		NUMCLASSTEXTURES =58;				/// esto tampoco deberia dar problemas
 	}
 	~AppGlcm(){delete this;}
 	void configDisplacements();
@@ -85,15 +85,15 @@ void AppGlcm::offLineProcessing(){
 		getline(file,nameImage);
 		std::cout<<"imagen: "<<i<<std::endl;
 		cv::Mat src = cv::imread(nameImage,0);
-		imshow("src", src);
+		//imshow("src", src);
 		cv::Mat newSrc;
 		//preProcessing(src,newSrc);
-		cv::waitKey();
+		//cv::waitKey();
 		
 		std::string stringFeatures = "";
 		glcm.execute(src,stringFeatures);
 		
-		cout << " 2 +++++++++++++++++++++++++++++++++++++++" << endl;
+		//cout << " 2 +++++++++++++++++++++++++++++++++++++++" << endl;
 		DataFrameViewer::push(fileResults,nameImage,stringFeatures,clase); 
 
 		if( i%NUMCLASSTEXTURES == 0){ clase++; }

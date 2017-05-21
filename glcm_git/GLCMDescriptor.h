@@ -92,8 +92,8 @@ bool GLCM::execute(cv::Mat& src , std::string& strFeatures){
 	int countDisplacements=0;
 	cv::Mat imgReduced;
 	red.processFrame(src,imgReduced);
-	imshow("out reduced", imgReduced);
-	waitKey();
+	///imshow("out reduced", imgReduced);
+	///waitKey();
 	DataFrameViewer::displayByFile(imgReduced,"reducido.txt");
 	std::cout << "x"<<endl;
 
