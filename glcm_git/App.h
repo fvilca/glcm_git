@@ -41,7 +41,7 @@ public:
 	}
 	
 	virtual void preProcessing(cv::Mat&, cv::Mat&)=0;
-	virtual void initProcessing()=0;
+	virtual void initProcessing(int,int,int)=0;
 	virtual void offLineProcessing()=0;
 	virtual void onLineProcessing()=0;
 	virtual void endProcessing()=0;

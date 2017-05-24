@@ -88,12 +88,15 @@ public:
 		std::cout<<std::endl;
 	}
 
-	static void push(std::ofstream& toFile, std::string imgFile,std::string strFeatures,int clase){
+	static void push(int color, int step, int angle,std::ofstream& toFile, std::string imgFile,std::string strFeatures,int clase){
 
-		toFile<<imgFile<<";"
-			  <<strFeatures
-			  <<clase
-			  <<std::endl;
+		toFile << color << "; "
+			<< step << "; "
+			<< angle << "; "
+			<< imgFile << ";"
+			<<strFeatures
+			<<clase
+			<<std::endl;
 	}
 
 };

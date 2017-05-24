@@ -26,14 +26,20 @@ public:
 
 public:
 	GLCM(){ 
-		red.setFactorReduce(8);
+		featureFinder.featuresVector.clear();
+		displacements.vector.clear();
+		featuresForAllDisplacements.clear();
+		NUMDISPLACEMENTS = 0;
+		NUMFEATURES = 0;
 	}
+	
 	bool enabledGLCM();
 	std::string getNameFeatures();
-	void configDisplacements();
+	void configDisplacements(int, int);
 	void configFeatures();
 	bool execute(cv::Mat& src, std::string& str);
 	std::string featuresToString(void);
+
 };
 
 std::string GLCM::getNameFeatures(){
@@ -71,13 +77,17 @@ bool GLCM::enabledGLCM(){
 	return true;
 }
 
-void GLCM::configDisplacements(){ ///esto no debe estar aqui se supone que esto es cerrado
+void GLCM::configDisplacements(int step, int angle){ ///esto no debe estar aqui se supone que esto es cerrado
 
-	displacements.push(Displacement(20,10));
-	displacements.push(Displacement(10,-20));
+	
+	displacements.push(Displacement(step,angle));
+	displacements.push(Displacement(-step, -angle));
+	displacements.push(Displacement(-step, angle));
+	displacements.push(Displacement(step, -angle));
+	/*displacements.push(Displacement(10,-20));
 	displacements.push(Displacement(20,20));
 	displacements.push(Displacement(20,-20));	
-	displacements.push( Displacement(-10,-10));
+	displacements.push( Displacement(-10,-10));*/
 
 	NUMDISPLACEMENTS = displacements.getNumDisplacements();
 	isDisplacementsEnabled = true;
@@ -94,8 +104,8 @@ bool GLCM::execute(cv::Mat& src , std::string& strFeatures){
 	red.processFrame(src,imgReduced);
 	///imshow("out reduced", imgReduced);
 	///waitKey();
-	DataFrameViewer::displayByFile(imgReduced,"reducido.txt");
-	std::cout << "x"<<endl;
+	//DataFrameViewer::displayByFile(imgReduced,"reducido.txt");
+	///std::cout << "x"<<endl;
 
 	while(countDisplacements < NUMDISPLACEMENTS){
 		
@@ -125,14 +135,14 @@ bool GLCM::execute(cv::Mat& src , std::string& strFeatures){
 void GLCM::configFeatures(){
 
 	
-	featureFinder.pushMetric(new Energy);
-	featureFinder.pushMetric(new Maximun);
-	featureFinder.pushMetric(new Disimilarity);
-	featureFinder.pushMetric(new Contrast);
-	featureFinder.pushMetric(new LocalHomogeneity);
+	//featureFinder.pushMetric(new Energy);
+	//featureFinder.pushMetric(new Maximun);
+	//featureFinder.pushMetric(new Disimilarity);
+	//featureFinder.pushMetric(new Contrast);
+	//featureFinder.pushMetric(new LocalHomogeneity);
 	featureFinder.pushMetric(new Correlation);
-	featureFinder.pushMetric(new Entropy);
-	featureFinder.pushMetric(new Mean);
+	//featureFinder.pushMetric(new Entropy);
+	//featureFinder.pushMetric(new Mean);
 
 	NUMFEATURES =  featureFinder.getNumFeatures();
 	isFeaturesEnabled = true;
